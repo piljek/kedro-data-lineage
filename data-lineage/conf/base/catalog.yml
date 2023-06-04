@@ -2,3 +2,53 @@
 #
 # Documentation for this file format can be found in "The Data Catalog"
 # Link: https://docs.kedro.org/en/stable/data/data_catalog.html
+
+# Create test data sources for demonstration purposes
+
+Customers:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/customers.csv
+  layer: Customer
+
+Stock:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/stock.csv
+  layer: Inventory
+
+Products:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/products.csv
+  layer: Inventory
+
+Sales:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/sales.csv
+  layer: Sales
+
+
+# SQL datasets
+sales_customer_flow:
+  type: pandas.SQLQueryDataSet
+  sql: "SELECT s.OrderID, c.FirstName, c.LastName, c.Email 
+        FROM Sales s 
+        JOIN Customers c ON s.CustomerID = c.CustomerID;"
+  credentials: 
+    con: postgresql://demo:demo@localhost/demo
+
+  # SQL datasets
+sales_products_flow:
+  type: pandas.SQLQueryDataSet
+  sql: "SELECT s.OrderID, p.ProductName, p.Category, p.Price
+        FROM Sales s
+        JOIN Products p ON s.ProductID = p.ProductID;;"
+  credentials: 
+    con: postgresql://demo:demo@localhost/demo
+
+sales_products_stock_flow:
+  type: pandas.SQLQueryDataSet
+  sql: "SELECT s.OrderID, p.ProductName, p.Category, p.Price, st.QuantityAvailable
+        FROM Sales s
+        JOIN Products p ON s.ProductID = p.ProductID
+        JOIN Stock st ON p.ProductID = st.ProductID;"
+  credentials: 
+    con: postgresql://demo:demo@localhost/demo

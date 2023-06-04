@@ -17,6 +17,12 @@ $ kedro info
 
 # Kedro Viz
 $ poetry add kedro-viz
+
+# Pyarrow for parquet files
+$ poetry add kedro pandas pyarrow 
+
+# SQL Files
+$ poetry add SQLAlchemy psycog2
 ```
 
 Setup new Kedro Project

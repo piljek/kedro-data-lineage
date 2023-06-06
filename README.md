@@ -30,5 +30,10 @@ Setup new Kedro Project
 $ kedro new
 --> enter humand readable project name: 
 data_lineage
-
 ```
+
+Create new pipeline that is automatically registered
+```bash
+$ kedro pipeline create <enter name>
+```
+This will create the `<enter name>` package and creates `__init__.py, pipeline.py` and `node.py` classes. The pipeline class already contains a method stub for a pipeline as starting point. 

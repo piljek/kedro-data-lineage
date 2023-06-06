@@ -5,22 +5,22 @@
 
 # Create test data sources for demonstration purposes
 
-Customers:
+Customers_:
   type: pandas.CSVDataSet
   filepath: data/01_raw/customers.csv
   layer: Customer
 
-Stock:
+Stock_:
   type: pandas.CSVDataSet
   filepath: data/01_raw/stock.csv
   layer: Inventory
 
-Products:
+Products_:
   type: pandas.CSVDataSet
   filepath: data/01_raw/products.csv
   layer: Inventory
 
-Sales:
+Sales_:
   type: pandas.CSVDataSet
   filepath: data/01_raw/sales.csv
   layer: Sales
@@ -52,3 +52,7 @@ sales_products_stock_flow:
         JOIN Stock st ON p.ProductID = st.ProductID;"
   credentials: 
     con: postgresql://demo:demo@localhost/demo
+  layer: Sales
+
+
+

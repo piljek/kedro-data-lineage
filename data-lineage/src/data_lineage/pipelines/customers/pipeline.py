@@ -20,7 +20,7 @@ def create_pipeline(**kwargs) -> Pipeline:
                 Customers_Email="params:Customers_Email",
             ),
             outputs="Customers",
-            tags=["customer_cols"]
+            tags=["customers"]
         ),
     ])
     return pipeline

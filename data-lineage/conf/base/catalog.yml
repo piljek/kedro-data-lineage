@@ -44,7 +44,7 @@ sales_products_flow:
   credentials: 
     con: postgresql://demo:demo@localhost/demo
 
-sales_products_stock_flow:
+sales_products_stock_flow: 
   type: pandas.SQLQueryDataSet
   sql: "SELECT s.OrderID, p.ProductName, p.Category, p.Price, st.QuantityAvailable
         FROM Sales s

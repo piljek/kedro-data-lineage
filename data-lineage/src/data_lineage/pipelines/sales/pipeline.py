@@ -12,7 +12,7 @@ def create_pipeline(**kwargs) -> Pipeline:
         node(
             list_columns,
             inputs=dict(
-                    Sales = "Sales", # Sales data,
+                    Sales = "Sales_", # Sales data,
                     # Sales Columns:
                     Sales_OrderID= "params:Sales_OrderID",
                     Sales_CustomerID= "params:Sales_CustomerID",
@@ -20,8 +20,8 @@ def create_pipeline(**kwargs) -> Pipeline:
                     Sales_Quantity= "params:Sales_Quantity",
                     Sales_SalesDate= "params:Sales_SalesDate",
                         ),
-            outputs="Sales_Columns",
-            tags=["sales_cols"]
+            outputs="Sales",
+            tags=["sales"]
         ),
         # node(
         # read_sales_dict

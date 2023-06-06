@@ -19,7 +19,7 @@ def create_pipeline(**kwargs) -> Pipeline:
                         Products_SalesDate="params:Products_SalesDate",
                         ),
             outputs="Products",
-            tags=["products_cols"]
+            tags=["products"]
         ),
         node(
             func=list_columns,
@@ -28,7 +28,7 @@ def create_pipeline(**kwargs) -> Pipeline:
                         Stock_QuantityAvailability="params:Stock_QuantityAvailability",                        
                         ),
             outputs="Stock",
-            tags=["stock_cols"]
+            tags=["stock"]
         ),
     ])
     return pipeline

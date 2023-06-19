@@ -990,14 +990,14 @@ yaml-yamldataset = ["PyYAML (>=4.2,<7.0)", "pandas (>=1.3,<3.0)"]
 
 [[package]]
 name = "kedro-viz"
-version = "6.2.0"
+version = "6.3.0"
 description = "Kedro-Viz helps visualise Kedro data and analytics pipelines"
 category = "main"
 optional = false
 python-versions = ">=3.7, <3.11"
 files = [
-    {file = "kedro-viz-6.2.0.tar.gz", hash = "sha256:489d8a8c5f2544f2bc93a99f82bc409da845c5eee5fe31d456144f23dede1e2c"},
-    {file = "kedro_viz-6.2.0-py3-none-any.whl", hash = "sha256:aa38780173f57019078a89401215e69e182ecce059ce6b3e521053adeaefcf95"},
+    {file = "kedro-viz-6.3.0.tar.gz", hash = "sha256:b268af71bf1403f95251a113b4171c5e0fa9221e10b6b8b7f399574de1b05dd9"},
+    {file = "kedro_viz-6.3.0-py3-none-any.whl", hash = "sha256:33063e6de826b9338d302fd6be63094143d2dc35860ca5a607b44e45fc25fb9d"},
 ]
 
 [package.dependencies]

@@ -40,19 +40,19 @@ sales_products_flow:
   type: pandas.SQLQueryDataSet
   sql: "SELECT s.OrderID, p.ProductName, p.Category, p.Price
         FROM Sales s
-        JOIN Products p ON s.ProductID = p.ProductID;;"
+        JOIN Products p ON s.ProductID = p.ProductID;"
   credentials: 
     con: postgresql://demo:demo@localhost/demo
 
 sales_products_stock_flow: 
   type: pandas.SQLQueryDataSet
-  sql: "SELECT s.OrderID, p.ProductName, p.Category, p.Price, st.QuantityAvailable
+  sql: "SELECT s.OrderID, p.ProductName, p.Category, p.Price, st.Quantity
         FROM Sales s
         JOIN Products p ON s.ProductID = p.ProductID
         JOIN Stock st ON p.ProductID = st.ProductID;"
   credentials: 
     con: postgresql://demo:demo@localhost/demo
-  layer: Sales
+
 
 
 

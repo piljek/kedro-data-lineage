@@ -1,9 +1,11 @@
 # Sales columns as parameters
+Sales_SalesID: "Sales.SalesID"
 Sales_OrderID: "Sales.OrderID"
 Sales_CustomerID: "Sales.CustomerID"
 Sales_ProductID: "Sales.ProductID" 
 Sales_Quantity: "Sales.Quantity"
 Sales_SalesDate: "Sales.SalesDate"
+Sales_SalesValue: "Sales.SalesValue"
 
 # Customer columns as parameters
 Customers_CustomerID: "Customers.CustomerID"
@@ -16,9 +18,9 @@ Products_ProductID: "Products.ProductID"
 Products_ProductName: "Products.ProductName"
 Products_Category: "Products.Category"
 Products_Price: "Products.Price"
-Products_SalesDate: "Products.SalesDate"
+# Products_SalesDate: "Products.SalesDate"
 
 # Stock columns as parameters
 Stock_ProductID: "Stock.ProductID"
-Stock_QuantityAvailability: "Stock.QuantityAvailability"
+Stock_Quantity: "Stock.Quantity"
 

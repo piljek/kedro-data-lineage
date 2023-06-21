@@ -8,7 +8,7 @@ from kedro.pipeline import Pipeline, node, pipeline
 
 
 def create_pipeline(**kwargs) -> Pipeline:
-    pipeline = Pipeline([
+    sales_pipeline = pipeline([
         node(
             list_columns,
             inputs=dict(
@@ -19,34 +19,14 @@ def create_pipeline(**kwargs) -> Pipeline:
                     Sales_ProductID= "params:Sales_ProductID" ,
                     Sales_Quantity= "params:Sales_Quantity",
                     Sales_SalesDate= "params:Sales_SalesDate",
+                    Sales_SalesValue = "params:Sales_SalesValue"
                         ),
             outputs="Sales",
             tags=["sales"]
         ),
-        # node(
-        # read_sales_dict
-        # , inputs=dict( sales="params:Sales", OrderID= "params:Sales.OrderID", Test = "params:OrderID")
-        # , outputs="sout"
-        # ),
-        # node(
-        # func= lambda x: x,
-        # inputs= ["parameters:Sales.OrderID"],
-        # outputs="lambda_x",
-        # name="LambdaReadingSalesData",
-        # tags=["pri_tag"]
-        # ),
-        # node(func= read_sales_data,
-        #         inputs= ["parameters:Sales.OrderID", "parameters:Sales"],
-        #         outputs="sales_data",
-        #         name="ReadingSalesData"
-        #         ),
-        # node(func= read_sales_data,
-        #         inputs= ["sales_products_stock_flow", "parameters:Sales"],
-        #         outputs="sales_sql_data",
-        #         name="ReadingSalesSQL"
-        #         ),
-    ])
-    return pipeline
+
+    ], namespace = "Sales")
+    return sales_pipeline
 
 def list_columns(**any):
     return

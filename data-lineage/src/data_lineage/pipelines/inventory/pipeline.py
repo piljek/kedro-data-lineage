@@ -7,8 +7,12 @@ from kedro.pipeline import Pipeline, node, pipeline
 
 
 def create_pipeline(**kwargs) -> Pipeline:
+    """A ``Pipeline`` defined as a collection of ``Node`` objects. This class
+    treats nodes as part of a graph representation and provides inputs,
+    outputs and execution order.
+    """
 
-    pipeline = Pipeline([
+    inventory_products_pipeline = pipeline([
         node(
             func=list_columns,
             inputs=dict(Products="Products_",
@@ -21,6 +25,11 @@ def create_pipeline(**kwargs) -> Pipeline:
             outputs="Products",
             tags=["products"]
         ),
+    ],
+    namespace = "Products"
+    )
+
+    inventory_stock_pipeline = pipeline([
         node(
             func=list_columns,
             inputs=dict(Stock="Stock_",
@@ -30,8 +39,14 @@ def create_pipeline(**kwargs) -> Pipeline:
             outputs="Stock",
             tags=["stock"]
         ),
-    ])
-    return pipeline
+    ],
+    namespace = "Stock")
+
+    inventory_pipeline = pipeline(
+        pipe = inventory_products_pipeline + inventory_stock_pipeline,
+     namespace= "Inventory")
+
+    return inventory_pipeline
 
 
 def list_columns(**kwargs):

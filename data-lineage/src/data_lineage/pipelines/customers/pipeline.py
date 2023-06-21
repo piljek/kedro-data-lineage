@@ -8,7 +8,7 @@ from kedro.pipeline import Pipeline, node, pipeline
 
 def create_pipeline(**kwargs) -> Pipeline:
 
-    pipeline = Pipeline([
+    customer_pipeline = pipeline([
         node(
             list_columns,
             inputs=dict(
@@ -22,8 +22,9 @@ def create_pipeline(**kwargs) -> Pipeline:
             outputs="Customers",
             tags=["customers"]
         ),
-    ])
-    return pipeline
+    ],
+    namespace = "Customer")
+    return customer_pipeline
 
 
 def list_columns(**any):

@@ -13,7 +13,14 @@ Customers_FirstName: "Customers.FirstName"
 Customers_LastName: "Customers.LastName"
 Customers_Email: "Customers.Email"
 
-# Products columns as parameters
+# Column names for the inventory source system depicted as parameters
+# It is a key-value structure and the key can be accessed within a pipeline
+# using the prefix "params:"
+# E.g. to include the Product Name as parameter, you need to include the 
+# entry as input using variable_name = "params:Product_ProductName"
+
+# Product columns as parameters
+
 Products_ProductID: "Products.ProductID"
 Products_ProductName: "Products.ProductName"
 Products_Category: "Products.Category"
@@ -23,4 +30,5 @@ Products_Price: "Products.Price"
 # Stock columns as parameters
 Stock_ProductID: "Stock.ProductID"
 Stock_Quantity: "Stock.Quantity"
+
 

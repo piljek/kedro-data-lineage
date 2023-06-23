@@ -16,7 +16,7 @@ def create_pipeline(**kwargs) -> Pipeline:
                 Customers="Customers",
                 Sales_OrderID="params:Sales_CustomerID",
                 Customers_OrderID="params:Customers_CustomerID",
-            ),            
+            ),
             outputs="sales_customer_view_out",
             tags=["sales", "customers", "sales_customers_flow"],
         ),
@@ -87,11 +87,14 @@ def create_pipeline(**kwargs) -> Pipeline:
 
     projection_pipeline = pipeline(
         # sales_customer_view + sales_products_view + sales_products_stock_view,
-        pipe= p_sales_customer_view + p_sales_products_view + p_sales_products_stock,
-        namespace="Projections",
+        pipe= # p_sales_customer_view +
+        p_sales_products_view 
+        # p_sales_products_stock,
+        , namespace="Projections",
         inputs={"Sales": "Sales.Sales",
-                "Products": "Inventory.Products.Products", "Stock": "Inventory.Stock.Stock",
-                "Customers":"Customer.Customers"}
+                "Products": "Inventory.Products.Products",  # "Stock": "Inventory.Stock.Stock",
+                #"Customers": "Customer.Customers"
+                }
     )
 
     return projection_pipeline

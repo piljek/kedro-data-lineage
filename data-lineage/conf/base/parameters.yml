@@ -31,4 +31,62 @@ Products_Price: "Products.Price"
 Stock_ProductID: "Stock.ProductID"
 Stock_Quantity: "Stock.Quantity"
 
+# Top products 
+n_top_products: 10
+
+
+Projections:
+  Sales_Customers:
+    Customers_CustomerID : ""
+    Sales_CustomerID : ""
+  Sales_Products:
+    Sales_CustomerID            : ""
+    Products_ProductName        : ""
+    Products_Category           : ""
+    Products_Price         : ""
+  Sales_Products_Stock:
+    Sales_OrderID         : ""
+    Products_ProductName  : ""
+    Products_Category     : ""
+    Products_Price        : ""
+    Stock_ProductID       : ""
+    Stock_Quantity    : ""
+
+Inventory:
+  Products:
+    Products_ProductID : ""
+    Products_ProductName    : ""            
+    Products_Category            : ""       
+    Products_Price  : ""
+  Stock:
+    Stock_ProductID : ""
+    Stock_Quantity : ""
+
+Sales:
+  Sales_OrderID : ""                                   
+  Sales_CustomerID  : ""                               
+  Sales_ProductID  : ""                                
+  Sales_Quantity  : ""                                 
+  Sales_SalesDate  : ""                                
+  Sales_SalesValue  : ""
+
+Sales_Measures:        
+  Products:
+    Products_ProductID  : "" 
+  Sales:
+    Sales_SalesValue : ""
+  Inventory:
+    Products:
+      Products:
+        Products_ProductID : ""
+  # Sales_SalesValue    : ""              
+  Sales_OrderID       : ""                    
+  # Sales_SalesValue    : ""      
+
+Customer:
+  Customers_CustomerID         : ""                 
+  Customers_FirstName          : ""                 
+  Customers_LastName          : ""                  
+  Customers_Email  : ""
+
 

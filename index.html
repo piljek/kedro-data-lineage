@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>Data Lineage using Kedro</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">Data Lineage using Kedro</a>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#kedro-data-lineage" class="nav-link">kedro-data-lineage</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#repository-setup" class="nav-link">Repository Setup</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#build-project" class="nav-link">Build project</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#kedro" class="nav-link">Kedro</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="kedro-data-lineage">kedro-data-lineage</h1>
+<p>This GitHub repository provides a comprehensive demonstration of a data lineage implementation using Kedro, an open-source Python library, and various source systems. This repository showcases the setup and utilization of pipelines described in the Medium Blog Post to demonstrate enablement of data lineage.</p>
+<p><strong>Data lineage</strong> refers to the process of documenting and tracking the journey of data from its origin to its final destinations, encompassing the various systems and transformations it undergoes along the way.</p>
+<p>Through interactive exploration and visualization, the repository illustrates the modeling of projections across source systems, calculation of key performance indicators (KPIs), and derivation of sales statistics. The code and examples provided offer valuable insights into establishing data lineage, ensuring data quality, and facilitating impact analysis in enterprise data pipelines.</p>
+<h2 id="repository-setup">Repository Setup</h2>
+<p>This repository is set up using Poetry, a dependency management tool for Python. It provides a streamlined environment for managing project dependencies. To ensure a consistent and reproducible development environment, we recommend installing Miniconda, a lightweight distribution of Conda, before setting up the project locally. With Poetry and the local environment in place, you can easily manage dependencies and explore the power of data lineage using Kedro. Refer to the documentation for detailed instructions on setting up the environment and utilizing the repository for data lineage analysis.</p>
+<pre><code class="language-bash"># Creates local python environment
+$ conda create -p ./env python=3.8
+$ conda activate
+
+# Create poetry if not existent
+$ poetry init
+$ poetry install -vvv
+
+# Install Kedro using conda
+$ conda install -c conda-forge kedro
+# Test installation
+$ kedro info
+
+# Kedro Viz
+$ poetry add kedro-viz
+
+# Pyarrow for parquet files
+$ poetry add kedro pandas pyarrow 
+
+# SQL Files
+$ poetry add SQLAlchemy psycog2
+</code></pre>
+<p>Setup new Kedro Project</p>
+<pre><code class="language-bash">$ kedro new
+# --&gt; enter human readable project name: 
+data_lineage
+</code></pre>
+<h2 id="build-project">Build project</h2>
+<p>To build the project, follow these steps:</p>
+<ol>
+<li>
+<p>Clone the repository using the following command:
+    <code>git clone &lt;repository-url&gt;</code></p>
+</li>
+<li>
+<p>Create a local environment by navigating to the project directory and executing the command:
+    <code>$ conda create -p ./env python=3.8
+    $ conda activate</code></p>
+</li>
+<li>
+<p>Activate the local environment. The command may vary depending on your operating system:</p>
+</li>
+<li>For Windows:
+   <code>$ env\Scripts\activate</code></li>
+<li>
+<p>For macOS/Linux:
+   <code>$ conda activate ./env</code></p>
+</li>
+<li>
+<p>Install the project dependencies using Poetry. Run the following command:
+    <code>$ poetry install -vvv</code></p>
+</li>
+</ol>
+<p>With these steps completed, the project will be set up, and the necessary dependencies will be installed in the local environment. You can now proceed with building and running the project using the provided scripts and commands.</p>
+<h2 id="kedro">Kedro</h2>
+<h3 id="kedro-viz">Kedro Viz</h3>
+<p>Navigate to the source directory and start the React component</p>
+<pre><code>$ cd data-lineage
+$ kedro viz
+</code></pre>
+<h3 id="kedro-pipeline-creation">Kedro pipeline creation</h3>
+<p>Create new pipeline that is automatically registered</p>
+<pre><code class="language-bash">$ kedro pipeline create &lt;enter name&gt;
+</code></pre>
+<p>This will create the <code>&lt;enter name&gt;</code> package and creates <code>__init__.py, pipeline.py</code> and <code>node.py</code> classes. The pipeline class already contains a method stub for a pipeline as starting point. </p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js" defer></script>
+        <script src="search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.4.3
+Build Date UTC : 2023-07-13 17:04:26.906112+00:00
+-->
